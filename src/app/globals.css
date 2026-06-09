@@ -1,0 +1,230 @@
+@import "tailwindcss";
+
+/* ─── Custom breakpoints & theme tokens ──────────────────────────────────── */
+@theme {
+  /* Extended breakpoints for large screens and TVs */
+  --breakpoint-xs:  320px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+  --breakpoint-5xl: 3840px;
+
+  /* Font families wired to CSS variables set by next/font */
+  --font-sans:      var(--font-geist-sans);
+  --font-mono:      var(--font-geist-mono);
+  --font-domine:    var(--font-domine);
+  --font-jetbrains: var(--font-jetbrains-mono);
+
+  /* Color tokens wired to CSS custom properties */
+  --color-background:        var(--background);
+  --color-foreground:        var(--foreground);
+  --color-card:              var(--card);
+  --color-primary:           var(--primary);
+  --color-primary-foreground:var(--primary-foreground);
+  --color-secondary:         var(--secondary);
+  --color-muted:             var(--muted);
+  --color-muted-foreground:  var(--muted-foreground);
+  --color-accent:            var(--accent);
+  --color-border:            var(--border);
+  --color-input:             var(--input);
+  --color-ring:              var(--ring);
+  --radius:                  var(--radius-base);
+}
+
+/* ─── Light mode design tokens ───────────────────────────────────────────── */
+:root {
+  --background:         #ffffff;
+  --foreground:         #0a0a0a;
+  --card:               #ffffff;
+  --cards-background:   #f8f8f8;
+  --primary:            #171717;
+  --primary-foreground: #fafafa;
+  --secondary:          #f5f5f5;
+  --muted:              #f5f5f5;
+  --muted-foreground:   #737373;
+  --accent:             #f5f5f5;
+  --border:             #e5e5e5;
+  --input:              #e5e5e5;
+  --ring:               #a1a1a1;
+  --radius-base:        0.625rem;
+}
+
+/* ─── Dark mode design tokens ────────────────────────────────────────────── */
+.dark {
+  --background:         #0a0a0a;
+  --foreground:         #fafafa;
+  --card:               #171717;
+  --cards-background:   #1a1a1a;
+  --primary:            #fafafa;
+  --primary-foreground: #171717;
+  --secondary:          #262626;
+  --muted:              #262626;
+  --muted-foreground:   #a1a1a1;
+  --accent:             #262626;
+  --border:             rgba(255, 255, 255, 0.1);
+  --input:              rgba(255, 255, 255, 0.1);
+  --ring:               rgba(255, 255, 255, 0.2);
+}
+
+/* ─── Global base styles ─────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  letter-spacing: -0.05em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Fluid base font scaling for large screens ──────────────────────────── */
+@media (min-width: 1920px) { html { font-size: 18px; } }
+@media (min-width: 2560px) { html { font-size: 20px; } }
+@media (min-width: 3840px) { html { font-size: 24px; } }
+
+/* ─── Dot grid background pattern ───────────────────────────────────────── */
+.dot-pattern {
+  background-image: radial-gradient(
+    circle at 0.75px 0.75px,
+    rgba(120, 120, 120, 0.13) 0.75px,
+    transparent 0
+  );
+  background-size: 10px 10px;
+}
+
+.dark .dot-pattern {
+  background-image: radial-gradient(
+    circle at 0.75px 0.75px,
+    rgba(200, 200, 200, 0.05) 0.75px,
+    transparent 0
+  );
+}
+
+/* ─── Section gradient overlays ─────────────────────────────────────────── */
+.hero-gradient {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 40%,
+    var(--background) 100%
+  );
+}
+
+.hero-gradient-top {
+  background: linear-gradient(
+    to top,
+    transparent 0%,
+    transparent 40%,
+    var(--background) 100%
+  );
+}
+
+/* ─── Muted filler-word text ─────────────────────────────────────────────── */
+.second-text {
+  color: var(--muted-foreground);
+}
+
+/* ─── Touch device overrides ─────────────────────────────────────────────── */
+@media (pointer: coarse) {
+  .nav-link    { min-width: 44px; min-height: 44px; }
+  .tag-item    { min-height: 32px; padding-top: 6px; padding-bottom: 6px; }
+  .project-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-bounce,
+  .animate-ping,
+  .animate-spin {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ─── Subtle scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar             { width: 6px; }
+::-webkit-scrollbar-track       { background: transparent; }
+::-webkit-scrollbar-thumb       { background: var(--border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); }
+
+/* ─── Focus ring for keyboard nav ────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* ─── Skip-to-content link (keyboard accessibility) ─────────────────────── */
+.skip-to-content {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--foreground);
+  color: var(--background);
+  border-radius: var(--radius-base);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-to-content:focus {
+  top: 1rem;
+}
+
+/* ─── Entrance animation keyframes ──────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Applied by AnimatedSection when element enters viewport */
+.animate-fade-in-up {
+  animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease both;
+}
+
+/* Staggered children delays (applied via inline style or data attrs) */
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+
+/* ─── Scroll-to-top button ───────────────────────────────────────────────── */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.scroll-top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}

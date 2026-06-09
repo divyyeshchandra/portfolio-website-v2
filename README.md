@@ -1,75 +1,36 @@
-# Personal Portfolio Website v2
-
-A modern, minimalist developer portfolio built with Next.js 15, Tailwind CSS v4, and TypeScript. Inspired by [emanueledipietro.com](https://www.emanueledipietro.com).
-
-## Projects Featured
-
-- **HyperBlitz** — [hyperblitz.xyz](https://www.hyperblitz.xyz)
-- **FreeMRR** — Verified startup revenue directory & live MRR leaderboard
-- **PolyBucket** — Production-grade Polymarket copy-trading system with 80% consensus algorithm
-
-## Tech Stack
-
-- **Framework:** Next.js 15 (App Router)
-- **Styling:** Tailwind CSS v4
-- **Language:** TypeScript
-- **Fonts:** Domine (display) + Geist (body) + JetBrains Mono
-- **Theme:** Dark/Light mode via `next-themes`
-- **Deployment:** Vercel
-
-## Design Reference
-
-Design system cloned from [emanueledipietro.com](https://www.emanueledipietro.com):
-
-- Font: Domine (serif) for all headings + Geist (sans) for body
-- Letter spacing: `tracking-tighter` (-0.05em) globally
-- Background: subtle dot grid pattern with gradient section fades
-- Nav/Footer: frosted glass pill (`backdrop-blur`, `bg-neutral-50/50`)
-- Theme: full dark/light toggle, neutral palette
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
+First, run the development server:
+
 ```bash
-npm install
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Project Structure
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```
-src/
-├── app/
-│   ├── layout.tsx        # Root layout, fonts, theme provider
-│   ├── page.tsx          # Home page — composes all sections
-│   └── globals.css       # CSS variables, dot pattern, Tailwind
-├── components/
-│   ├── layout/
-│   │   ├── Navbar.tsx    # Fixed frosted glass nav
-│   │   └── Footer.tsx    # Frosted glass footer
-│   ├── sections/
-│   │   ├── Hero.tsx      # Intro, bio, stats
-│   │   ├── Projects.tsx  # Project cards grid
-│   │   ├── Experience.tsx # Timeline
-│   │   └── Skills.tsx    # Skills grid
-│   └── ui/               # Reusable atoms
-└── lib/
-    ├── projects.ts       # Project data
-    ├── experience.ts     # Work/education data
-    └── skills.ts         # Skills data
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Build Plan
+## Learn More
 
-See [PLAN.md](./PLAN.md) for the full milestone-by-milestone implementation plan, design specs, and component architecture.
+To learn more about Next.js, take a look at the following resources:
 
-## Deployment
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-```bash
-vercel --prod
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## License
+## Deploy on Vercel
 
-MIT
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
