@@ -2,16 +2,15 @@ import Image from "next/image";
 import {
   RiVerifiedBadgeFill,
   RiCalendarLine,
-  RiCodeBoxLine,
-  RiExchangeLine,
-  RiAppsLine,
+  RiTwitterXLine,
+  RiRobot2Line,
   RiGithubLine,
 } from "react-icons/ri";
 import StatCard from "@/components/ui/StatCard";
 import InterestTag from "@/components/ui/InterestTag";
 import ScrollCTA from "@/components/ui/ScrollCTA";
 
-const INTERESTS = ["Web3", "DeFi", "Building", "Crypto", "Trading", "Travel"];
+const INTERESTS = ["Coding", "Gym", "Traveling", "Crypto", "Trading"];
 
 const STATS = [
   {
@@ -20,19 +19,20 @@ const STATS = [
     icon: <RiCalendarLine className="size-4 sm:size-5" />,
   },
   {
-    value: "3",
-    label: "Products Shipped",
-    icon: <RiAppsLine className="size-4 sm:size-5" />,
+    value: "300+",
+    label: "Followers on X",
+    icon: <RiTwitterXLine className="size-4 sm:size-5" />,
+    href: "https://x.com/realcryptoblitz",
   },
   {
-    value: "CEX+DEX",
-    label: "Exchange Expert",
-    icon: <RiExchangeLine className="size-4 sm:size-5" />,
+    value: "CEX+DEX+AI",
+    label: "Building in",
+    icon: <RiRobot2Line className="size-4 sm:size-5" />,
   },
   {
-    value: "Web2+3",
-    label: "Full Stack",
-    icon: <RiCodeBoxLine className="size-4 sm:size-5" />,
+    value: "1000+",
+    label: "GitHub Contributions",
+    icon: <RiGithubLine className="size-4 sm:size-5" />,
   },
 ];
 
@@ -46,109 +46,103 @@ export default function Hero() {
     >
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 hero-gradient" />
 
-      <div className="relative z-10 mx-auto flex flex-col gap-5 sm:gap-6
+      <div className="relative z-10 mx-auto flex flex-col gap-3
                       max-w-[1440px] 3xl:max-w-[1920px] 4xl:max-w-[2200px]">
 
-        {/* ── Photo stack + name row ───────────────────────────────────── */}
-        <div className="flex items-center justify-between gap-4">
-
-          {/* Photo stack */}
-          <div className="flex items-center -space-x-3 sm:-space-x-4 shrink-0">
-            {/* Secondary photo — golden jacket, behind, tilts left */}
-            <div className="-rotate-3 sm:-rotate-5 relative
-                            size-16 sm:size-20 md:size-24 lg:size-32 xl:size-40 3xl:size-48
-                            rounded-xl ring-2 sm:ring-3 ring-[var(--border)]/50 shadow-md
-                            overflow-hidden bg-neutral-200 dark:bg-neutral-800 shrink-0">
-              <Image
-                src="/images/photo-secondary.jpg"
-                alt="Divyyesh Chandra"
-                fill
-                sizes="(max-width: 640px) 64px, (max-width: 768px) 80px,
-                       (max-width: 1024px) 96px, (max-width: 1280px) 128px, 160px"
-                className="object-cover object-top"
-                priority
-              />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-amber-100 to-amber-200
-                              dark:from-neutral-700 dark:to-neutral-800" />
-            </div>
-
-            {/* Primary profile photo — white tee, front, tilts right */}
-            <div className="rotate-3 sm:rotate-5 relative z-10
-                            size-16 sm:size-20 md:size-24 lg:size-32 xl:size-40 3xl:size-48
-                            rounded-xl ring-2 sm:ring-3 ring-[var(--border)]/50 shadow-md
-                            overflow-hidden bg-neutral-200 dark:bg-neutral-800 shrink-0">
-              <Image
-                src="/images/profile.jpg"
-                alt="Divyyesh Chandra"
-                fill
-                sizes="(max-width: 640px) 64px, (max-width: 768px) 80px,
-                       (max-width: 1024px) 96px, (max-width: 1280px) 128px, 160px"
-                className="object-cover object-top"
-                priority
-              />
-              <div className="absolute inset-0 -z-10 bg-gradient-to-br from-neutral-200 to-neutral-300
-                              dark:from-neutral-600 dark:to-neutral-700" />
-            </div>
+        {/* ── Photo stack ─────────────────────────────────────────────── */}
+        <div className="flex items-end -space-x-5 sm:-space-x-6">
+          {/* Secondary — golden jacket, behind, tilts left */}
+          <div className="-rotate-[6deg] relative
+                          size-20 sm:size-24 md:size-28 lg:size-36 xl:size-44 3xl:size-48
+                          rounded-2xl ring-2 ring-[var(--border)]/50 shadow-lg
+                          overflow-hidden bg-neutral-200 dark:bg-neutral-800 shrink-0">
+            <Image
+              src="/images/photo-secondary.jpg"
+              alt="Divyyesh Chandra"
+              fill
+              sizes="(max-width: 640px) 80px, (max-width: 768px) 96px,
+                     (max-width: 1024px) 112px, (max-width: 1280px) 144px, 176px"
+              className="object-cover object-top"
+              priority
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-amber-100 to-amber-200
+                            dark:from-neutral-700 dark:to-neutral-800" />
           </div>
 
-          {/* ── Name + verification ──────────────────────────────────── */}
-          <div className="flex-1 flex items-center justify-between gap-2 min-w-0">
-            <div className="flex flex-col gap-1 min-w-0">
-              <p className="font-domine font-medium text-base sm:text-lg xl:text-xl 3xl:text-2xl
-                            leading-snug">
-                <span className="second-text">Hey! </span>
-                <a
-                  href="https://x.com/realcryptoblitz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold hover:underline underline-offset-4
-                             text-[var(--foreground)] inline-flex items-center gap-1.5 flex-wrap"
-                >
-                  I&apos;m&nbsp;Divyyesh Chandra
-                  <RiVerifiedBadgeFill className="size-4 sm:size-5 text-blue-500 shrink-0" />
-                </a>
-              </p>
+          {/* Primary — white tee, front, tilts right */}
+          <div className="rotate-[4deg] relative z-10
+                          size-20 sm:size-24 md:size-28 lg:size-36 xl:size-44 3xl:size-48
+                          rounded-2xl ring-2 ring-[var(--border)]/50 shadow-lg
+                          overflow-hidden bg-neutral-200 dark:bg-neutral-800 shrink-0">
+            <Image
+              src="/images/profile.jpg"
+              alt="Divyyesh Chandra"
+              fill
+              sizes="(max-width: 640px) 80px, (max-width: 768px) 96px,
+                     (max-width: 1024px) 112px, (max-width: 1280px) 144px, 176px"
+              className="object-cover object-top"
+              priority
+            />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-neutral-200 to-neutral-300
+                            dark:from-neutral-600 dark:to-neutral-700" />
+          </div>
+        </div>
 
-              {/* Interest tags */}
-              <div className="flex flex-wrap gap-1 sm:gap-1.5 mt-0.5">
-                {INTERESTS.map((tag) => (
-                  <InterestTag key={tag} label={tag} />
-                ))}
-              </div>
-            </div>
+        {/* ── Name + tags ─────────────────────────────────────────────── */}
+        <div className="flex flex-col gap-1.5 sm:gap-2">
+          <p className="font-domine font-medium
+                        text-sm sm:text-base 3xl:text-lg
+                        leading-snug">
+            <span className="second-text">Hey! </span>
+            <a
+              href="https://www.linkedin.com/in/divyyesh-chandra-9426511a0/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline underline-offset-4
+                         text-[var(--foreground)] inline-flex items-center gap-1.5 flex-wrap"
+            >
+              I&apos;m Divyyesh Chandra
+              <RiVerifiedBadgeFill className="size-3.5 sm:size-4 text-blue-500 shrink-0" />
+            </a>
+          </p>
+
+          {/* Interest tags */}
+          <div className="flex flex-wrap gap-1 sm:gap-1.5">
+            {INTERESTS.map((tag) => (
+              <InterestTag key={tag} label={tag} />
+            ))}
           </div>
         </div>
 
         {/* ── Bio ─────────────────────────────────────────────────────── */}
-        <p className="font-domine font-medium
-                      text-xl sm:text-2xl lg:text-3xl 3xl:text-4xl
+        <p className="font-domine font-medium mt-3 sm:mt-5
+                      text-lg sm:text-xl lg:text-2xl 3xl:text-3xl
                       leading-snug max-w-3xl 3xl:max-w-5xl">
-          <span className="second-text">Backend engineer with </span>
-          4 years
-          <span className="second-text"> building at the intersection of </span>
-          Web2 and Web3.
-          <span className="second-text"> Spent 3 years deep inside </span>
-          exchange infrastructure
-          <span className="second-text"> — </span>
-          spot, futures, margin.
-          <span className="second-text"> Now I ship my own products.</span>
+          Backend engineer
+          <span className="second-text"> from India </span>
+          building across Web2 and Web3
+          <span className="second-text"> for 4 years. </span>
+          I ship products, break things,
+          <span className="second-text"> and share what I learn about </span>
+          crypto and AI.
         </p>
 
         {/* ── Stats grid ──────────────────────────────────────────────── */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 xl:gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mt-3 sm:mt-5">
           {STATS.map((stat) => (
             <StatCard
               key={stat.label}
               value={stat.value}
               label={stat.label}
               icon={stat.icon}
+              href={stat.href}
             />
           ))}
         </div>
 
         {/* ── GitHub Activity ─────────────────────────────────────────── */}
         <div className="rounded-2xl ring-1 ring-[var(--border)]
-                        bg-neutral-50 dark:bg-neutral-900 overflow-hidden">
+                        bg-white dark:bg-neutral-900 overflow-hidden">
           {/* Header row */}
           <div className="flex items-center gap-2 px-4 sm:px-5 pt-3.5 pb-2">
             <RiGithubLine className="size-4 text-[var(--muted-foreground)] shrink-0" />

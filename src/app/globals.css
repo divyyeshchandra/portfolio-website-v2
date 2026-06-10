@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Make dark: utilities respond to the .dark class (next-themes) not OS media query */
+@variant dark (&:where(.dark, .dark *));
+
 /* ─── Custom breakpoints & theme tokens ──────────────────────────────────── */
 @theme {
   /* Extended breakpoints for large screens and TVs */
@@ -32,18 +35,18 @@
 
 /* ─── Light mode design tokens ───────────────────────────────────────────── */
 :root {
-  --background:         #ffffff;
+  --background:         #f5f5f5;
   --foreground:         #0a0a0a;
   --card:               #ffffff;
-  --cards-background:   #f8f8f8;
+  --cards-background:   #ebebeb;
   --primary:            #171717;
   --primary-foreground: #fafafa;
-  --secondary:          #f5f5f5;
-  --muted:              #f5f5f5;
-  --muted-foreground:   #737373;
-  --accent:             #f5f5f5;
-  --border:             #e5e5e5;
-  --input:              #e5e5e5;
+  --secondary:          #ebebeb;
+  --muted:              #ebebeb;
+  --muted-foreground:   #525252;
+  --accent:             #e5e5e5;
+  --border:             #d4d4d4;
+  --input:              #d4d4d4;
   --ring:               #a1a1a1;
   --radius-base:        0.625rem;
 }

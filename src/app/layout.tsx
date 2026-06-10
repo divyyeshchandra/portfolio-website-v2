@@ -25,6 +25,13 @@ export const metadata: Metadata = {
     creator: "@realcryptoblitz",
   },
   metadataBase: new URL("https://divyyeshchandra.dev"),
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/favicon-512.png",
+  },
 };
 
 export const viewport: Viewport = {
@@ -52,7 +59,7 @@ export default function RootLayout({
 
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

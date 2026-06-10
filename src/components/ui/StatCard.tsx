@@ -4,15 +4,18 @@ interface StatCardProps {
   value: string;
   label: string;
   icon: ReactNode;
+  href?: string;
 }
 
-export default function StatCard({ value, label, icon }: StatCardProps) {
+export default function StatCard({ value, label, icon, href }: StatCardProps) {
+  const Tag = href ? "a" : "div";
   return (
-    <div
+    <Tag
+      {...(href ? { href, target: "_blank", rel: "noopener noreferrer" } : {})}
       className="flex flex-col gap-2
                  rounded-xl p-2.5 sm:p-3 xl:p-4
                  ring-1 ring-[var(--border)]
-                 bg-neutral-50 dark:bg-neutral-900
+                 bg-white dark:bg-neutral-900
                  hover:bg-neutral-100 dark:hover:bg-neutral-800
                  active:scale-[0.98]
                  transition-all duration-150
@@ -23,9 +26,9 @@ export default function StatCard({ value, label, icon }: StatCardProps) {
 
       {/* Value */}
       <span
-        className="font-domine text-2xl lg:text-3xl
-                   font-medium lg:font-semibold
-                   text-[var(--foreground)] leading-none"
+        className="font-domine text-xl lg:text-2xl
+                   font-semibold
+                   text-[var(--foreground)] leading-tight break-words"
       >
         {value}
       </span>
@@ -34,6 +37,6 @@ export default function StatCard({ value, label, icon }: StatCardProps) {
       <span className="text-xs sm:text-sm text-[var(--muted-foreground)] leading-tight">
         {label}
       </span>
-    </div>
+    </Tag>
   );
 }

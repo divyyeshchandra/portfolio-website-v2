@@ -36,34 +36,72 @@ function ExperienceEntry({ entry }: { entry: Experience }) {
         <div className="flex items-start gap-3">
 
           {/* Org logo */}
-          <div className="relative size-8 3xl:size-10 shrink-0
-                          bg-white dark:bg-neutral-900
-                          rounded-lg ring-2 ring-[var(--background)] shadow-sm
-                          overflow-hidden">
-            <Image
-              src={entry.logo}
-              alt={`${entry.org} logo`}
-              fill
-              sizes="40px"
-              className="object-contain p-1"
-            />
-            {/* Fallback background */}
-            <div className="absolute inset-0 -z-10
-                            bg-gradient-to-br from-neutral-100 to-neutral-200
-                            dark:from-neutral-700 dark:to-neutral-800
-                            flex items-center justify-center">
-              <span className="text-xs font-bold text-[var(--muted-foreground)]">
-                {entry.org[0]}
-              </span>
+          {entry.url ? (
+            <a
+              href={entry.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${entry.org}`}
+              className="relative size-10 3xl:size-12 shrink-0
+                         bg-white dark:bg-neutral-900
+                         rounded-xl ring-1 ring-[var(--border)] shadow-sm
+                         overflow-hidden hover:ring-2 hover:ring-[var(--foreground)]/20
+                         transition-all duration-150"
+            >
+              <Image
+                src={entry.logo}
+                alt={`${entry.org} logo`}
+                fill
+                sizes="48px"
+                className="object-contain p-1.5"
+              />
+              <div className="absolute inset-0 -z-10
+                              bg-gradient-to-br from-neutral-100 to-neutral-200
+                              dark:from-neutral-700 dark:to-neutral-800
+                              flex items-center justify-center">
+                <span className="text-xs font-bold text-[var(--muted-foreground)]">
+                  {entry.org[0]}
+                </span>
+              </div>
+            </a>
+          ) : (
+            <div className="relative size-10 3xl:size-12 shrink-0
+                            bg-white dark:bg-neutral-900
+                            rounded-xl ring-1 ring-[var(--border)] shadow-sm
+                            overflow-hidden">
+              <Image
+                src={entry.logo}
+                alt={`${entry.org} logo`}
+                fill
+                sizes="48px"
+                className="object-contain p-1.5"
+              />
+              <div className="absolute inset-0 -z-10
+                              bg-gradient-to-br from-neutral-100 to-neutral-200
+                              dark:from-neutral-700 dark:to-neutral-800
+                              flex items-center justify-center">
+                <span className="text-xs font-bold text-[var(--muted-foreground)]">
+                  {entry.org[0]}
+                </span>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Org name + role + active indicator */}
           <div className="flex flex-col gap-0.5 min-w-0 flex-1">
             <div className="flex items-center gap-2 flex-wrap">
               <h3 className="text-base sm:text-lg xl:text-xl font-semibold
                              text-[var(--foreground)] leading-tight">
-                {entry.org}
+                {entry.url ? (
+                  <a
+                    href={entry.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline underline-offset-4"
+                  >
+                    {entry.org}
+                  </a>
+                ) : entry.org}
               </h3>
 
               {/* Active ping dot — desktop (md+) */}
@@ -84,8 +122,8 @@ function ExperienceEntry({ entry }: { entry: Experience }) {
         </div>
 
         {/* Description */}
-        <p className="text-xs sm:text-sm text-[var(--muted-foreground)]
-                      leading-relaxed pl-0 md:pl-0 max-w-2xl">
+        <p className="text-sm sm:text-base text-[var(--muted-foreground)]
+                      leading-relaxed max-w-2xl">
           {entry.description}
         </p>
       </div>

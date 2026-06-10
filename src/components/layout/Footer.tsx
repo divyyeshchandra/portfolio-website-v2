@@ -3,8 +3,6 @@ import {
   RiLinkedinLine,
   RiTwitterXLine,
   RiMailLine,
-  RiExternalLinkLine,
-  RiGlobalLine,
 } from "react-icons/ri";
 
 const SOCIAL_LINKS = [
@@ -23,16 +21,10 @@ const SOCIAL_LINKS = [
     href: "https://x.com/realcryptoblitz",
     icon: RiTwitterXLine,
   },
-  {
-    label: "HyperBlitz",
-    href: "https://www.hyperblitz.xyz",
-    icon: RiGlobalLine,
-  },
 ];
 
-const EMAIL    = "divyyesh.chandra@kryptos.io";
-const WEBSITE  = "github.com/divyyeshchandra";
-const NAME     = "Divyyesh Chandra";
+const EMAIL = "divyyesh.bvp23@gmail.com";
+const NAME  = "Divyyesh Chandra";
 const YEAR     = new Date().getFullYear();
 /* ─────────────────────────────────────────────────────────────────────────── */
 
@@ -45,7 +37,7 @@ export default function Footer() {
                  mb-4 sm:mb-6
                  rounded-t-3xl
                  border border-[var(--border)]
-                 bg-neutral-50/50 dark:bg-neutral-900/50
+                 bg-white/95 dark:bg-neutral-900/80
                  backdrop-blur-sm"
     >
       <div
@@ -69,34 +61,15 @@ export default function Footer() {
                 Contact Me
               </h2>
               <a
-                href={`mailto:${EMAIL}`}
-                className="text-sm sm:text-base text-[var(--muted-foreground)]
-                           hover:text-[var(--foreground)] transition-colors duration-150
-                           inline-flex items-center gap-1.5 group"
-              >
-                <RiMailLine className="size-4 shrink-0
-                                       group-hover:text-[var(--foreground)]
-                                       transition-colors" />
-                {EMAIL}
-              </a>
-            </div>
-
-            {/* Other links */}
-            <div className="flex flex-col gap-1">
-              <p className="text-xs font-jetbrains uppercase tracking-widest
-                            text-[var(--muted-foreground)]">
-                Other Links
-              </p>
-              <a
-                href={`https://${WEBSITE}`}
+                href={`https://mail.google.com/mail/?view=cm&to=${EMAIL}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm sm:text-base text-[var(--muted-foreground)]
                            hover:text-[var(--foreground)] transition-colors duration-150
                            inline-flex items-center gap-1.5 group"
               >
-                <RiExternalLinkLine className="size-4 shrink-0" />
-                {WEBSITE}
+                <RiMailLine className="size-4 shrink-0 group-hover:text-[var(--foreground)] transition-colors" />
+                {EMAIL}
               </a>
             </div>
 

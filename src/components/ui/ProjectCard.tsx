@@ -30,26 +30,10 @@ interface ProjectCardProps {
   fullWidth?: boolean;
 }
 
-export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
-  const status = STATUS_CONFIG[project.status];
-
+function CardInner({ project, status }: { project: Project; status: { label: string; classes: string } }) {
+  const hasUrl = !!project.url;
   return (
-    <a
-      href={project.url}
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label={`View ${project.title}`}
-      className={`project-card group block
-                  ring-1 ring-[var(--border)]
-                  bg-neutral-50 dark:bg-neutral-900
-                  rounded-2xl md:rounded-3xl
-                  overflow-hidden
-                  hover:shadow-xl hover:bg-[var(--accent)]/50
-                  hover:-translate-y-1.5
-                  focus-visible:outline-2 focus-visible:outline-[var(--ring)]
-                  transition-all duration-300
-                  ${fullWidth ? "lg:col-span-2 3xl:col-span-1" : ""}`}
-    >
+    <>
       {/* ── Image area ──────────────────────────────────────────────────── */}
       <div className="relative w-full aspect-video overflow-hidden
                       bg-neutral-100 dark:bg-neutral-800">
@@ -64,7 +48,6 @@ export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
                      group-hover:scale-[1.03]
                      transition-transform duration-500"
         />
-        {/* Fallback shown while image loads or is missing */}
         <div className="absolute inset-0 -z-10
                         bg-gradient-to-br from-neutral-200 to-neutral-300
                         dark:from-neutral-700 dark:to-neutral-800
@@ -77,10 +60,7 @@ export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
 
         {/* Status badge — overlaid top-right */}
         <div className="absolute top-3 right-3">
-          <span
-            className={`text-xs font-medium px-2.5 py-1 rounded-full
-                        backdrop-blur-sm ${status.classes}`}
-          >
+          <span className={`text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm ${status.classes}`}>
             {status.label}
           </span>
         </div>
@@ -88,7 +68,6 @@ export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
 
       {/* ── Card body ───────────────────────────────────────────────────── */}
       <div className="p-4 sm:p-5 xl:p-6 flex flex-col gap-3">
-        {/* Title + external link icon */}
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-0.5 min-w-0">
             <h3 className="font-domine text-xl sm:text-xl lg:text-2xl
@@ -109,17 +88,14 @@ export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
           />
         </div>
 
-        {/* Tagline */}
         <p className="text-sm text-[var(--muted-foreground)] leading-relaxed line-clamp-2">
           {project.tagline}
         </p>
 
-        {/* Description — only shows on wider cards */}
         <p className="hidden sm:block text-sm second-text leading-relaxed line-clamp-2">
           {project.description}
         </p>
 
-        {/* Tech stack tags */}
         <div className="flex flex-wrap gap-1.5 pt-1">
           {project.tech.map((t) => (
             <span
@@ -133,14 +109,48 @@ export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
           ))}
         </div>
 
-        {/* Visit link */}
-        <div className="flex items-center gap-1 pt-1
-                        text-xs second-text font-jetbrains
-                        group-hover:text-[var(--foreground)] transition-colors">
-          <RiExternalLinkLine className="size-3.5 shrink-0" />
-          <span className="truncate">{project.url.replace(/^https?:\/\//, "")}</span>
-        </div>
+        {hasUrl && (
+          <div className="flex items-center gap-1 pt-1
+                          text-xs second-text font-jetbrains
+                          group-hover:text-[var(--foreground)] transition-colors">
+            <RiExternalLinkLine className="size-3.5 shrink-0" />
+            <span className="truncate">{project.url.replace(/^https?:\/\//, "")}</span>
+          </div>
+        )}
       </div>
-    </a>
+    </>
+  );
+}
+
+export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
+  const status = STATUS_CONFIG[project.status];
+  const hasUrl = !!project.url;
+
+  const baseClass = `project-card group block
+                     ring-1 ring-[var(--border)]
+                     bg-white dark:bg-neutral-900
+                     rounded-2xl md:rounded-3xl
+                     overflow-hidden
+                     transition-all duration-300
+                     ${fullWidth ? "lg:col-span-2 3xl:col-span-1" : ""}`;
+
+  if (hasUrl) {
+    return (
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`View ${project.title}`}
+        className={`${baseClass} hover:shadow-xl hover:bg-[var(--accent)]/50 hover:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-[var(--ring)]`}
+      >
+        <CardInner project={project} status={status} />
+      </a>
+    );
+  }
+
+  return (
+    <div className={`${baseClass} cursor-default`}>
+      <CardInner project={project} status={status} />
+    </div>
   );
 }

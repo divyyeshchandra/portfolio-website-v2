@@ -23,7 +23,7 @@ export const projects: Project[] = [
     url: "https://www.hyperblitz.xyz",
     tech: ["Next.js", "TypeScript", "Hyperliquid API", "WebSockets", "Tailwind CSS"],
     status: "live",
-    year: "2025",
+    year: "2026",
   },
   {
     id: "freemrr",
@@ -35,7 +35,7 @@ export const projects: Project[] = [
     url: "https://freemrr.com",
     tech: ["Next.js", "TypeScript", "Supabase", "Stripe", "Framer Motion"],
     status: "live",
-    year: "2025",
+    year: "2026",
   },
   {
     id: "polybucket",
@@ -44,9 +44,21 @@ export const projects: Project[] = [
     description:
       "Groups 5–10 expert wallets by niche and executes trades only when 80%+ of the bucket agrees. Sub-150ms execution, non-custodial key management, paper trading simulation, and a Telegram bot interface.",
     image: "/images/projects/polybucket.png",
-    url: "https://www.nexussstudio.com/portfolio/polybucket",
+    url: "",
     tech: ["Go", "Next.js", "PostgreSQL", "Redis", "Polygon", "WebSocket"],
     status: "coming-soon",
-    year: "2025",
+    year: "2026",
+  },
+  {
+    id: "nexussstudio",
+    title: "NexussStudio",
+    tagline: "Premium development collective for Web3, SaaS, and cutting-edge digital products.",
+    description:
+      "A next-gen software studio helping forward-thinking founders ship products fast, solve complex problems, and scale globally. Full-stack builds from design to deployment — Web3, SaaS, and beyond.",
+    image: "/images/projects/nexussstudio.png",
+    url: "https://www.nexussstudio.com",
+    tech: ["Next.js", "TypeScript", "Web3", "Tailwind CSS", "Framer Motion"],
+    status: "live",
+    year: "2026",
   },
 ];

@@ -8,6 +8,9 @@ import {
   RiBriefcaseLine,
   RiCodeSSlashLine,
   RiMailLine,
+  RiGithubLine,
+  RiLinkedinLine,
+  RiTwitterXLine,
 } from "react-icons/ri";
 
 const NAV_LINKS = [
@@ -91,9 +94,32 @@ export default function MobileDrawer({ open, onClose }: MobileDrawerProps) {
         </nav>
 
         {/* Footer of drawer */}
-        <div className="mt-auto pt-6 border-t border-[var(--border)]">
+        <div className="mt-auto pt-6 border-t border-[var(--border)] flex flex-col gap-4">
+          {/* Social links */}
+          <div className="flex items-center gap-2">
+            {[
+              { href: "https://github.com/divyyeshchandra", label: "GitHub", Icon: RiGithubLine },
+              { href: "https://www.linkedin.com/in/divyyesh-chandra-9426511a0/", label: "LinkedIn", Icon: RiLinkedinLine },
+              { href: "https://x.com/realcryptoblitz", label: "Twitter / X", Icon: RiTwitterXLine },
+            ].map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="size-9 rounded-full flex items-center justify-center
+                           border border-[var(--border)] bg-[var(--card)]
+                           text-[var(--muted-foreground)]
+                           hover:text-[var(--foreground)] hover:bg-[var(--accent)]
+                           transition-colors duration-150"
+              >
+                <Icon className="size-[18px]" />
+              </a>
+            ))}
+          </div>
           <p className="text-xs second-text font-jetbrains">
-            © 2026 Portfolio
+            © 2026 Divyyesh Chandra
           </p>
         </div>
       </div>

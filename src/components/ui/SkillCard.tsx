@@ -4,6 +4,7 @@ import {
   SiEthereum, SiPolygon,
   SiDocker, SiGooglecloud, SiGithub, SiVercel, SiStripe, SiFigma, SiOpenai,
   SiNextdotjs, SiReact, SiTailwindcss,
+  SiFirebase, SiExpress, SiMongodb, SiApachekafka, SiGraphql, SiPrisma,
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 import {
@@ -18,10 +19,20 @@ import {
   RiGlobalLine,
   RiSettings4Line,
   RiDatabase2Line,
+  RiAppsLine,
+  RiLineChartLine,
+  RiStackLine,
+  RiCoinLine,
+  RiRepeatLine,
+  RiRouteLine,
+  RiBrainLine,
+  RiMoonLine,
+  RiCpuLine,
+  RiMagicLine,
 } from "react-icons/ri";
 import type { Skill } from "@/lib/skills";
 
-/* ─── Icon registry: iconKey → component ────────────────────────────────── */
+// Icon registry: iconKey -> component
 const ICONS: Record<string, React.ElementType> = {
   // Languages
   typescript:   SiTypescript,
@@ -33,9 +44,15 @@ const ICONS: Record<string, React.ElementType> = {
 
   // Backend
   nodejs:       SiNodedotjs,
+  express:      SiExpress,
   postgresql:   SiPostgresql,
+  mongodb:      SiMongodb,
   redis:        SiRedis,
+  firebase:     SiFirebase,
   supabase:     SiSupabase,
+  kafka:        SiApachekafka,
+  graphql:      SiGraphql,
+  prisma:       SiPrisma,
   api:          RiCodeSSlashLine,
   websocket:    RiArrowUpDownLine,
 
@@ -45,6 +62,11 @@ const ICONS: Record<string, React.ElementType> = {
   ethers:       SiEthereum,
   polygon:      SiPolygon,
   defi:         RiFlashlightLine,
+  dapp:         RiAppsLine,
+  prediction:   RiLineChartLine,
+  layer2:       RiStackLine,
+  nft:          RiCoinLine,
+  copytrading:  RiRepeatLine,
 
   // Exchange
   spot:         RiExchangeLine,
@@ -69,6 +91,12 @@ const ICONS: Record<string, React.ElementType> = {
   stripe:       SiStripe,
   figma:        SiFigma,
   vscode:       VscCode,
+  hermes:       RiMagicLine,
+  openclaw:     RiBrainLine,
+  openrouter:   RiRouteLine,
+  glm:          RiCpuLine,
+  minimax:      RiRobot2Line,
+  kimi:         RiMoonLine,
 
   // Frontend (kept from earlier)
   nextjs:       SiNextdotjs,
@@ -88,7 +116,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
       className="flex flex-col items-center justify-center gap-1.5 text-center
                  rounded-xl p-2.5 sm:p-3 3xl:p-4
                  ring-1 ring-[var(--border)]
-                 bg-neutral-50 dark:bg-neutral-900
+                 bg-white dark:bg-neutral-900
                  hover:bg-neutral-100 dark:hover:bg-neutral-800
                  active:scale-95
                  transition-all duration-150

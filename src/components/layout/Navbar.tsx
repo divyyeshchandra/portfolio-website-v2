@@ -8,6 +8,8 @@ import {
   RiCodeSSlashLine,
   RiMenuLine,
   RiGithubLine,
+  RiLinkedinLine,
+  RiTwitterXLine,
 } from "react-icons/ri";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import MobileDrawer from "@/components/ui/MobileDrawer";
@@ -54,7 +56,7 @@ export default function Navbar() {
                      px-4 sm:px-6 xl:px-8 3xl:px-10
                      py-2 sm:py-2.5
                      max-w-[1440px] 3xl:max-w-[1920px]
-                     bg-neutral-50/50 dark:bg-neutral-900/50
+                     bg-white/90 dark:bg-neutral-900/80
                      backdrop-blur-sm
                      border border-[var(--border)] border-t-0
                      rounded-b-3xl"
@@ -67,7 +69,7 @@ export default function Navbar() {
                          bg-[var(--foreground)] flex items-center justify-center"
             >
               <span className="text-[var(--background)] text-xs font-bold font-domine leading-none">
-                P
+                D
               </span>
             </div>
           </Link>
@@ -102,21 +104,28 @@ export default function Navbar() {
 
           {/* ── Right: Controls ────────────────────────────────────────── */}
           <div className="flex items-center gap-1.5 sm:gap-2">
-            {/* GitHub link — hidden on xs, shown sm+ */}
-            <a
-              href="https://github.com/divyyeshchandra"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub profile"
-              className="nav-link hidden sm:flex size-8 sm:size-9 3xl:size-10 rounded-full
-                         items-center justify-center
-                         border border-[var(--border)] bg-[var(--card)]
-                         text-[var(--muted-foreground)]
-                         hover:text-[var(--foreground)] hover:bg-[var(--accent)]
-                         transition-colors duration-150"
-            >
-              <RiGithubLine className="size-4 sm:size-[18px]" />
-            </a>
+            {/* Social links — hidden on xs, shown sm+ */}
+            {[
+              { href: "https://github.com/divyyeshchandra", label: "GitHub", Icon: RiGithubLine },
+              { href: "https://www.linkedin.com/in/divyyesh-chandra-9426511a0/", label: "LinkedIn", Icon: RiLinkedinLine },
+              { href: "https://x.com/realcryptoblitz", label: "Twitter / X", Icon: RiTwitterXLine },
+            ].map(({ href, label, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="nav-link hidden sm:flex size-8 sm:size-9 3xl:size-10 rounded-full
+                           items-center justify-center
+                           border border-[var(--border)] bg-[var(--card)]
+                           text-[var(--muted-foreground)]
+                           hover:text-[var(--foreground)] hover:bg-[var(--accent)]
+                           transition-colors duration-150"
+              >
+                <Icon className="size-4 sm:size-[18px]" />
+              </a>
+            ))}
 
             {/* Theme toggle */}
             <ThemeToggle />
