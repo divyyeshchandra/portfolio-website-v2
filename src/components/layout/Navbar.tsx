@@ -6,6 +6,7 @@ import {
   RiFolderLine,
   RiBriefcaseLine,
   RiCodeSSlashLine,
+  RiFileTextLine,
   RiMenuLine,
   RiGithubLine,
   RiLinkedinLine,
@@ -18,6 +19,7 @@ const NAV_LINKS = [
   { href: "/#projects",   label: "Projects",  icon: RiFolderLine },
   { href: "/#experience", label: "Experience", icon: RiBriefcaseLine },
   { href: "/#skills",     label: "Skills",     icon: RiCodeSSlashLine },
+  { href: "/resume.pdf",  label: "Resume",     icon: RiFileTextLine, external: true },
 ];
 
 export default function Navbar() {
@@ -79,23 +81,21 @@ export default function Navbar() {
             aria-label="Main navigation"
             className="hidden sm:flex items-center gap-1"
           >
-            {NAV_LINKS.map(({ href, label, icon: Icon }) => {
+            {NAV_LINKS.map(({ href, label, icon: Icon, external }) => {
               const sectionId = href.replace("/#", "");
-              const isActive = activeSection === sectionId;
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  aria-label={label}
-                  className={`nav-link size-9 3xl:size-10 rounded-full
-                              flex items-center justify-center
-                              transition-colors duration-150
-                              ${
-                                isActive
-                                  ? "bg-neutral-200/70 dark:bg-neutral-800/70 text-[var(--foreground)]"
-                                  : "text-[var(--muted-foreground)] hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 hover:text-[var(--foreground)]"
-                              }`}
-                >
+              const isActive = !external && activeSection === sectionId;
+              const cls = `nav-link size-9 3xl:size-10 rounded-full
+                           flex items-center justify-center
+                           transition-colors duration-150
+                           ${isActive
+                             ? "bg-neutral-200/70 dark:bg-neutral-800/70 text-[var(--foreground)]"
+                             : "text-[var(--muted-foreground)] hover:bg-neutral-200/50 dark:hover:bg-neutral-800/50 hover:text-[var(--foreground)]"}`;
+              return external ? (
+                <a key={href} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className={cls}>
+                  <Icon className="size-4 sm:size-[18px] 3xl:size-5" />
+                </a>
+              ) : (
+                <Link key={href} href={href} aria-label={label} className={cls}>
                   <Icon className="size-4 sm:size-[18px] 3xl:size-5" />
                 </Link>
               );

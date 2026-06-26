@@ -7,6 +7,7 @@ import {
   RiFolderLine,
   RiBriefcaseLine,
   RiCodeSSlashLine,
+  RiFileTextLine,
   RiMailLine,
   RiGithubLine,
   RiLinkedinLine,
@@ -14,10 +15,11 @@ import {
 } from "react-icons/ri";
 
 const NAV_LINKS = [
-  { href: "/#projects",   label: "Projects",   icon: RiFolderLine },
-  { href: "/#experience", label: "Experience",  icon: RiBriefcaseLine },
-  { href: "/#skills",     label: "Skills",      icon: RiCodeSSlashLine },
-  { href: "/#contact",    label: "Contact",     icon: RiMailLine },
+  { href: "/#projects",   label: "Projects",   icon: RiFolderLine,    external: false },
+  { href: "/#experience", label: "Experience",  icon: RiBriefcaseLine, external: false },
+  { href: "/#skills",     label: "Skills",      icon: RiCodeSSlashLine,external: false },
+  { href: "/#contact",    label: "Contact",     icon: RiMailLine,      external: false },
+  { href: "/resume.pdf",  label: "Resume",      icon: RiFileTextLine,  external: true  },
 ];
 
 interface MobileDrawerProps {
@@ -78,19 +80,20 @@ export default function MobileDrawer({ open, onClose }: MobileDrawerProps) {
 
         {/* Nav links */}
         <nav className="flex flex-col gap-1">
-          {NAV_LINKS.map(({ href, label, icon: Icon }) => (
-            <Link
-              key={href}
-              href={href}
-              onClick={onClose}
-              className="flex items-center gap-3 px-4 py-3 rounded-xl
-                         text-base font-medium text-[var(--foreground)]
-                         hover:bg-[var(--accent)] transition-colors duration-150"
-            >
-              <Icon className="size-5 text-[var(--muted-foreground)] shrink-0" />
-              {label}
-            </Link>
-          ))}
+          {NAV_LINKS.map(({ href, label, icon: Icon, external }) => {
+            const cls = "flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium text-[var(--foreground)] hover:bg-[var(--accent)] transition-colors duration-150";
+            return external ? (
+              <a key={href} href={href} target="_blank" rel="noopener noreferrer" onClick={onClose} className={cls}>
+                <Icon className="size-5 text-[var(--muted-foreground)] shrink-0" />
+                {label}
+              </a>
+            ) : (
+              <Link key={href} href={href} onClick={onClose} className={cls}>
+                <Icon className="size-5 text-[var(--muted-foreground)] shrink-0" />
+                {label}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Footer of drawer */}
