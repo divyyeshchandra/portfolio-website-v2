@@ -26,8 +26,6 @@ const STATUS_CONFIG: Record<
 
 interface ProjectCardProps {
   project: Project;
-  /** When true the card spans full width (used for odd-count last card on 2-col grid) */
-  fullWidth?: boolean;
 }
 
 function CardInner({ project, status }: { project: Project; status: { label: string; classes: string } }) {
@@ -122,7 +120,7 @@ function CardInner({ project, status }: { project: Project; status: { label: str
   );
 }
 
-export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   const status = STATUS_CONFIG[project.status];
   const hasUrl = !!project.url;
 
@@ -131,8 +129,7 @@ export default function ProjectCard({ project, fullWidth }: ProjectCardProps) {
                      bg-white dark:bg-neutral-900
                      rounded-2xl md:rounded-3xl
                      overflow-hidden
-                     transition-all duration-300
-                     ${fullWidth ? "lg:col-span-2 3xl:col-span-1" : ""}`;
+                     transition-all duration-300`;
 
   if (hasUrl) {
     return (

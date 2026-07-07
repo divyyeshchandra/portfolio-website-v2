@@ -37,23 +37,15 @@ export default function Projects() {
         {/*
           Layout rules:
           • xs/sm/md → 1 column
-          • lg/xl/2xl → 2 columns; 3rd card spans full width (col-span-2)
-          • 3xl+ → 3 columns; all cards equal width
+          • lg/xl/2xl → 2 columns
+          • 3xl+ → 3 columns
+          All cards are equal width and height.
         */}
         <div className="grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3
                         gap-3 sm:gap-4 xl:gap-5 3xl:gap-6">
-          {projects.map((project, index) => {
-            // On a 2-col grid, if total count is odd the last card goes full-width
-            const isLastOdd =
-              projects.length % 2 !== 0 && index === projects.length - 1;
-            return (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                fullWidth={isLastOdd}
-              />
-            );
-          })}
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </div>
 
         {/* ── Scroll CTA ──────────────────────────────────────────────── */}
