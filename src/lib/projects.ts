@@ -14,6 +14,18 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: "bangerai",
+    title: "BangerAI",
+    tagline: "AI that turns rough drafts into posts people stop scrolling for.",
+    description:
+      "Paste a messy thought and the AI turns it into a sharp, ready-to-post X update that reads like a real person wrote it — no stiff wording, no filler, no giveaway AI tells. Free, no signup, and runs client-side: your API key stays in your browser and is never stored on our servers.",
+    image: "/images/projects/bangerai.png",
+    url: "https://www.bangerai.xyz",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Groq API"],
+    status: "live",
+    year: "2026",
+  },
+  {
     id: "hyperblitz",
     title: "HyperBlitz",
     tagline: "Direct Intelligence for the Hyperliquid Ledger.",
